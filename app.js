@@ -4,7 +4,6 @@ const cors = require('cors');
 require('dotenv').config();
 const { startOrderBookGeneration } = require('./services/order_book');
 
-
 const app = express();
 const expressWs = require('express-ws')(app);
 
