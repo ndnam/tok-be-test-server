@@ -1,5 +1,4 @@
 const express = require('express');
-const { WebSocket } = require("ws");
 const eventEmitter = require('../services/event');
 const { getOrderBook } = require('../services/order_book');
 
@@ -29,7 +28,7 @@ router.ws('/depth', (ws, req) => {
     keepAlive(ws);
 
     eventEmitter.on('OrderBookGenerated', async () => {
-        if (ws.readyState === WebSocket.OPEN) {
+        if (ws.readyState === ws.OPEN) {
             ws.send(JSON.stringify(await getOrderBook()));
         }
     });
